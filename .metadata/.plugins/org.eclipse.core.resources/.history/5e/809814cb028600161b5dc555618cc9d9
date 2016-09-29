@@ -39,7 +39,7 @@ public class Main {
 			ps = System.out;			// default to Stdout
 		}
 		initialize();
-		ArrayList<String> ladder = getWordLadderBFS("smart", "money");
+		ArrayList<String> ladder = getWordLadderBFS("wares", "HANTS");
 		if( ladder == null){
 			System.out.println("no word ladder can be found between " + startWord + " and " + endWord); 
 		}

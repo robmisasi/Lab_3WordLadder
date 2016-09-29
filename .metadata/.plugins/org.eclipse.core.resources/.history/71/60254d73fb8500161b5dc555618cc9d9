@@ -39,11 +39,6 @@ public class Main {
 			ps = System.out;			// default to Stdout
 		}
 		initialize();
-		ArrayList<String> ladder = getWordLadderBFS("smart", "money");
-		if( ladder == null){
-			System.out.println("no word ladder can be found between " + startWord + " and " + endWord); 
-		}
-		printLadder(ladder);
 		
 		// TODO methods to read in words, output ladder
 	}
@@ -81,48 +76,24 @@ public class Main {
 	}
 	
     public static ArrayList<String> getWordLadderBFS(String start, String end) {
-    	start = start.toUpperCase();
-    	end = end.toUpperCase();
-    	Vector<Node> visited = new Vector<Node>();
-    	Vector<String> foundWords = new Vector<String>();
-		//Vector<Node> path = new Vector<Node>();
+		Vector<Node> path = new Vector<Node>();
 		// TODO some code
-		//Set<String> dict = makeDictionary();
+		Set<String> dict = makeDictionary();
 		// TODO more code
 		Node startNode = new Node(start);
-		visited.add(startNode);
-		startNode.parent = null;
 		Vector<Node> queue = startNode.nextWord(start, dict);
-		Node finalNode = null;
-		while(queue.size() > 0){
-			startNode = queue.get(0);
-			startNode.found = true;
-			if(foundWords.contains(startNode.word)){
-				queue.remove(0);
+		int i = 0;
+		while(i < dict.size())
+			if(startNode.found){
+				i++;
 				continue;
 			}
-			if (startNode.word.contains(end)){
-				finalNode = startNode;
-				break;
-			}
-			visited.add(startNode);
-			foundWords.add(startNode.word);
-			Vector<Node> newQueue = startNode.nextWord(startNode.word, dict);
-			queue.addAll(queue.size(), newQueue);
-			queue.remove(0);
-		}
-		if(!startNode.word.contains(end)){
-			return null;
-		}
-		ArrayList<String> ladder =  new ArrayList<String>();
-		while(startNode.parent != null){
-			ladder.add(startNode.word);
-			startNode = startNode.parent;
+		
+			
+			
 		}
 		
-		ladder.add(start);
-		
-		return ladder; // replace this line later with real return
+		return null; // replace this line later with real return
 	}
     public static ArrayList<String> DFSInit(String start, String end){
 		startWord = start;

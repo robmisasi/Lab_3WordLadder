@@ -1,0 +1,20 @@
+package assignment3;
+
+public class Node {
+	boolean found;
+	public Node parent;
+	public String word;
+	public int lettersFromTarget(String end){
+		int shared = 0;
+		for (int i = 0; i < 5; i++){
+			if(word.charAt(i) == Main.start.charAt(i)){
+				shared++;
+			}
+			return shared;
+		}
+	}
+	public void wasFound(){
+		found = true;
+	}
+	public Node(String word)
+}
